@@ -1,0 +1,23 @@
+<?php 
+/**
+ * Implements hook_form_alter().
+ */
+function custom_webform_yearly_limit_form_alter(&$form, &$form_state, $form_id) {
+  // Check if the form is a webform.
+  if (strpos($form_id, 'webform_client_form_') === 0) {
+    // Locate the Per user submission limit field.
+    if (isset($form['submission_information']['webform_submission_limit_per_user'])) {
+      // Add the "Every Year" option to the dropdown.
+      $form['submission_information']['webform_submission_limit_per_user']['#options']['year'] = t('Every Year');
+    }
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function custom_webform_yearly_limit_help($path, $arg) {
+  if ($path == 'admin/help#custom_webform_yearly_limit') {
+    return '<p>' . t('This module adds the "Every Year" option to the Per user submission limit dropdown in Webforms.') . '</p>';
+  }
+}

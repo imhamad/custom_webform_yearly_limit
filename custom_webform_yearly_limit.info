@@ -1,0 +1,4 @@
+name = "Custom Webform Yearly Limit"
+description = "Allows users to set yearly submission limit options for Webforms."
+core = 7.x
+package = Custom
